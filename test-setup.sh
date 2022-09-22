@@ -33,9 +33,9 @@ git $(cat gitfwdenv) clone https://github.com/kdave/xfstests.git
 # Build xfstests.
 cd xfstests
 # Switch to older commit for 5.6 or earlierkernel.
-if [[ $(expr $KERNEL_VERSION + 0) -le 50006 ]]; then
-  git switch -c 5.6-test 'b2d552fbca6c9af18f603b845a688609479ebb3d'
-fi
+# if [[ $(expr $KERNEL_VERSION + 0) -le 50006 ]]; then
+#   git switch -c 5.6-test 'b2d552fbca6c9af18f603b845a688609479ebb3d'
+# fi
 make
 make install
 cd ..
@@ -57,7 +57,7 @@ git $(cat gitfwdenv) clone https://github.com/kdave/btrfs-progs.git
 # Make program
 cd ~/btrfs-progs
 ./autogen.sh
-./configure --prefix=/root/progs --disable-zoned --disable-python
+./configure --prefix=/root/progs --disable-zoned --disable-python --disable-documentation
 make
 make install
 cd ..
